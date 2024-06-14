@@ -6,7 +6,7 @@ function Card(props) {
   return (
     <div className="Card">
         <Box>
-            <Image src={props.image}/>
+            <Image h = '100%' src={props.image}/>
             <Text>{props.name}</Text>
             <Text>{props.price}</Text>
         </Box>

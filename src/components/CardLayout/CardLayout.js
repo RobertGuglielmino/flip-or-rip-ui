@@ -5,6 +5,10 @@ import { GridItem, Grid } from '@chakra-ui/react';
 // import Card from '../Card/Card.js';
 import cardBack from './mtg_back.jpg';
 import redX from './redX.png';
+import ripCommon from './ripCommon.png';
+import ripUncommon from './ripUncommon.png';
+import ripRare from './ripRare.png';
+import ripMythic from './ripMythic.png';
 import centsToDollars from '../../helpers/CentsToDollarFormatter.js';
 
 const Card = lazy(() => import('../Card/Card.js'));
@@ -54,6 +58,21 @@ function CardLayout(props) {
             </Grid>
         </div>
     );
+}
+
+function chooseDeadRarityImage(card) {
+    switch (card.rarity) {
+        case "common":
+            return ripCommon;
+        case "uncommon":
+            return ripUncommon;
+        case "rare":
+            return ripRare;
+        case "mythic":
+            return ripMythic;
+        default:
+            return ripCommon;
     }
+}
 
 export default CardLayout;

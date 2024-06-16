@@ -40,7 +40,7 @@ function App() {
   return (
     <div className="App">
       <VStack>
-        <Text>Flip Or Rip Dot Com</Text>
+        <Text fontSize="3xl">Flip Or Rip Dot Com</Text>
         <HStack>
           <Select value={set} onChange={e => setSet(e.target.value)}>
             {mtgSets.map((set) => (<option key={set} value={set}>{set}</option>))}

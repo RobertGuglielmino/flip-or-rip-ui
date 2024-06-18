@@ -34,7 +34,7 @@ function CardLayout(props) {
                 cardPrice = "";
                 break;
             default:
-                image = status === "RIP" ? redX : card.image;
+                image = status === "RIP" ? chooseDeadRarityImage(card) : card.image;
                 cardText = card.name;
                 cardPrice = centsToDollars(card.cents);
           }
@@ -42,11 +42,10 @@ function CardLayout(props) {
         return <GridItem 
                     onClick = {imageClickHandler}
                     key={index} rowSpan={1} colSpan={1} w='100%' h='100%'>
-                    <Card image={image}
+                    <Card h = '100%' w = '100%'
                         name={cardText}
                         price={cardPrice}
-                        w = '100%'
-                        h = '100%'
+                        image={image}
                         />
                 </GridItem>;
     })

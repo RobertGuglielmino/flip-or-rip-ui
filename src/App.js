@@ -47,7 +47,7 @@ function App() {
           </Select>
           <Button onClick={generatePack}>Let's Play!</Button>
         </HStack>
-        <CardLayout {...cardPackage} cards={booster}/>
+        <CardLayout {...cardPackage}/>
         {showResults && <Results lostValue={lostValue}/>}
       </VStack>
     </div>
@@ -55,6 +55,7 @@ function App() {
 
   function generatePack() {
     let respo;
+    console.log(set);
    
     const fetchData = async () => {
       try {
@@ -63,20 +64,17 @@ function App() {
           cards: {}
         };
         respo = await getBoosterPack(set);
-        console.log(respo);
-        respo['cards'].forEach((_, index) => (
+        let cards = respo['body']['cards'];
+        cards.forEach((_, index) => (
             initialCardState['cards'][index] = "NONE"
         ))
+        console.log(cards);
         setCardState(initialCardState);
-        setBooster(respo);
+        setBooster(cards);
         console.log("fetched");
       } catch (error) {
         console.log("failed at generating booster!");
         console.log(error);
-      } finally {
-        console.log("booster");
-        console.log(respo);
-
       }
     }
     setShowResults(true);

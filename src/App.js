@@ -63,7 +63,8 @@ function App() {
           cards: {}
         };
         respo = await getBoosterPack(set);
-        respo.forEach((_, index) => (
+        console.log(respo);
+        respo['cards'].forEach((_, index) => (
             initialCardState['cards'][index] = "NONE"
         ))
         setCardState(initialCardState);

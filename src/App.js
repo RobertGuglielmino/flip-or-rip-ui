@@ -58,7 +58,16 @@ function App() {
    
     const fetchData = async () => {
       try {
+        let initialCardState = {
+          nextAction: "FLIP",
+          cards: {}
+        };
         respo = await getBoosterPack(set);
+        respo.forEach((_, index) => (
+            initialCardState['cards'][index] = "NONE"
+        ))
+        setCardState(initialCardState);
+        setBooster(respo);
         console.log("fetched");
       } catch (error) {
         console.log("failed at generating booster!");
@@ -66,16 +75,7 @@ function App() {
       } finally {
         console.log("booster");
         console.log(respo);
-        let initialCardState = {
-          nextAction: "FLIP",
-          cards: {}
-        };
 
-        respo.forEach((_, index) => (
-            initialCardState['cards'][index] = "NONE"
-        ))
-        setCardState(initialCardState);
-        setBooster(respo);
       }
     }
     setShowResults(true);

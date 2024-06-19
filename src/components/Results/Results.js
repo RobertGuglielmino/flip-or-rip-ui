@@ -7,7 +7,7 @@ function Results(props) {
     return (
         <div className="Results">
             <Box>
-                <Text>u lost this much money :( :</Text>
+                <Text>u lost this much money 😔 :</Text>
                 <Text>{centsToDollars(props.lostValue)}</Text>
             </Box>
         </div>

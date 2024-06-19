@@ -1,10 +1,9 @@
 
 import './CardLayout.css';
-import { lazy } from 'react';
-import { GridItem, Grid } from '@chakra-ui/react';
+import { Suspense, lazy } from 'react';
+import { GridItem, Grid, Spinner } from '@chakra-ui/react';
 // import Card from '../Card/Card.js';
 import cardBack from './mtg_back.jpg';
-import redX from './redX.png';
 import ripCommon from './ripCommon.png';
 import ripUncommon from './ripUncommon.png';
 import ripRare from './ripRare.png';
@@ -42,19 +41,21 @@ function CardLayout(props) {
         return <GridItem 
                     onClick = {imageClickHandler}
                     key={index} rowSpan={1} colSpan={1} w='100%' h='100%'>
+            <Suspense fallback={<Spinner />}>
                     <Card h = '100%' w = '100%'
                         name={cardText}
                         price={cardPrice}
                         image={image}
                         />
+            </Suspense>
                 </GridItem>;
     })
 
     return (
         <div className="CardLayout">
-            <Grid templateRows='repeat(2, 1fr)'templateColumns='repeat(8, 1fr)' gap={6}>
-                {formattedBooster}
-            </Grid>
+                <Grid templateRows='repeat(2, 1fr)'templateColumns='repeat(8, 1fr)' gap={6}>
+                    {formattedBooster}
+                </Grid>
         </div>
     );
 }

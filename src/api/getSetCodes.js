@@ -8,7 +8,10 @@ async function fetchSets() {
      
     // Filter sets that can be purchased as packs
     const packSets = data.data.filter(set => packSetTypes.includes(set.set_type)).filter(set => set.code.length === 3).map((set) => {
-      return set.code.toUpperCase();
+      return {
+        setCode: set.code.toUpperCase(),
+        setName: set.name
+      }
     });
 
     return packSets;

@@ -88,6 +88,8 @@ function App() {
   }
 
   function generatePack() {
+    const start = Date.now();
+    console.log("started pack generation!");
     let respo;
 
     const fetchData = async () => {
@@ -107,6 +109,8 @@ function App() {
         setCardState(initialCardState);
         setBooster(cards);
         console.log("fetched");
+        console.log((Date.now() - start) + "ms to complete ");
+
       } catch (error) {
         console.log("failed at generating booster!");
         console.log(error);

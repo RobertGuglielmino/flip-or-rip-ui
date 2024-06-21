@@ -6,9 +6,6 @@ async function fetchSets() {
     const data = await response.json();
 
     const packSetTypes = ['core', 'expansion', 'draft_innovation', 'masters', 'funny','remastered'];
-
-    console.log(Object.keys(packTypesJson));
-    console.log(data);
      
     // Filter sets that can be purchased as packs
     const packSets = data.data

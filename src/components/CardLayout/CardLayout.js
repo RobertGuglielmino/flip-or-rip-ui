@@ -34,8 +34,8 @@ function CardLayout(props) {
                 cardPrice = "";
                 break;
             default:
-                image = status === "RIP" ? chooseDeadRarityImage(card) : card.image;
-                isFoiled = card.isFoiled;
+                image = card.image;
+                isFoiled = card.isFoil;
                 cardText = card.name;
                 cardPrice = centsToDollars(card.cents);
           }
@@ -44,6 +44,7 @@ function CardLayout(props) {
                     onClick = {imageClickHandler}
                     key={index} rowSpan={1} colSpan={1} w='100%' h='100%'>
                     <Card h = '100%' w = '100%'
+                        status={status}
                         name={cardText}
                         price={cardPrice}
                         image={image}

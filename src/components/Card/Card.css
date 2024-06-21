@@ -15,7 +15,12 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: auto;
     pointer-events: none; /* Ensures the overlay doesn't block interaction with the background */
   }
+
+
+.card-package:hover {
+  box-shadow: rgba(0,0,0,.6) 0 2px 5px;
+  transition: all .3s ease-out;
+  transform: scale(1.04)
+}

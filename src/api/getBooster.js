@@ -1,4 +1,4 @@
-async function getBoosterPack(set) {
+async function getBoosterPack(packData) {
 
     const url = "https://s8ib0k5c81.execute-api.us-east-1.amazonaws.com/prod"
 
@@ -8,7 +8,8 @@ async function getBoosterPack(set) {
         'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-        "set": set
+        "set": packData.set,
+        "pack_type": packData.boosterType
     }),
     });
 

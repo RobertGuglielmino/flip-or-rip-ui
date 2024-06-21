@@ -1,0 +1,703 @@
+{
+    "10E": [
+        "draft"
+    ],
+    "2ED": [
+        "default",
+        "starter"
+    ],
+    "2X2": [
+        "collector",
+        "draft"
+    ],
+    "2XM": [
+        "box-topper",
+        "draft",
+        "vip"
+    ],
+    "3ED": [
+        "default",
+        "starter"
+    ],
+    "4ED": [
+        "default",
+        "starter"
+    ],
+    "5DN": [
+        "draft",
+        "fat-pack"
+    ],
+    "5ED": [
+        "draft",
+        "starter"
+    ],
+    "6ED": [
+        "draft",
+        "tournament"
+    ],
+    "7ED": [
+        "draft"
+    ],
+    "8ED": [
+        "draft"
+    ],
+    "9ED": [
+        "draft"
+    ],
+    "A25": [
+        "draft"
+    ],
+    "AER": [
+        "draft",
+        "prerelease"
+    ],
+    "AFR": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-dungeons",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "AKH": [
+        "draft",
+        "prerelease"
+    ],
+    "ALA": [
+        "draft",
+        "premium",
+        "tournament"
+    ],
+    "ALL": [
+        "default"
+    ],
+    "APC": [
+        "draft",
+        "fat-pack"
+    ],
+    "ARB": [
+        "draft",
+        "six"
+    ],
+    "ARN": [
+        "default"
+    ],
+    "ATQ": [
+        "default"
+    ],
+    "AVR": [
+        "draft",
+        "six"
+    ],
+    "BFZ": [
+        "draft",
+        "prerelease"
+    ],
+    "BNG": [
+        "draft"
+    ],
+    "BOK": [
+        "draft",
+        "fat-pack"
+    ],
+    "BRO": [
+        "arena",
+        "collector",
+        "collector-sample",
+        "draft",
+        "jumpstart",
+        "prerelease",
+        "set"
+    ],
+    "CHK": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "CMM": [
+        "collector",
+        "collector-sample",
+        "draft",
+        "set"
+    ],
+    "CSP": [
+        "draft"
+    ],
+    "DGM": [
+        "draft",
+        "six"
+    ],
+    "DIS": [
+        "draft"
+    ],
+    "DKA": [
+        "draft",
+        "six"
+    ],
+    "DMR": [
+        "collector",
+        "draft"
+    ],
+    "DMU": [
+        "arena",
+        "box-topper",
+        "collector",
+        "collector-sample",
+        "draft",
+        "jumpstart",
+        "prerelease",
+        "set"
+    ],
+    "DOM": [
+        "arena",
+        "draft",
+        "prerelease",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "DRK": [
+        "default"
+    ],
+    "DST": [
+        "draft",
+        "fat-pack"
+    ],
+    "DTK": [
+        "draft",
+        "fat-pack"
+    ],
+    "ELD": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "EMA": [
+        "draft"
+    ],
+    "EMN": [
+        "draft",
+        "prerelease"
+    ],
+    "EVE": [
+        "draft"
+    ],
+    "EXO": [
+        "draft"
+    ],
+    "FEM": [
+        "default"
+    ],
+    "FRF": [
+        "draft"
+    ],
+    "FUT": [
+        "draft"
+    ],
+    "GRN": [
+        "arena",
+        "draft",
+        "theme-boros",
+        "theme-dimir",
+        "theme-golgari",
+        "theme-izzet",
+        "theme-selesnya"
+    ],
+    "GTC": [
+        "draft",
+        "prerelease-boros",
+        "prerelease-dimir",
+        "prerelease-gruul",
+        "prerelease-orzhov",
+        "prerelease-simic",
+        "six"
+    ],
+    "HML": [
+        "default"
+    ],
+    "HOU": [
+        "draft",
+        "prerelease"
+    ],
+    "ICE": [
+        "default",
+        "starter"
+    ],
+    "IKO": [
+        "arena",
+        "box-topper",
+        "collector",
+        "collector-jp",
+        "draft",
+        "jp",
+        "prerelease",
+        "theme-b",
+        "theme-g",
+        "theme-monsters",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "IMA": [
+        "draft"
+    ],
+    "INV": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "ISD": [
+        "draft",
+        "six"
+    ],
+    "JOU": [
+        "draft"
+    ],
+    "JUD": [
+        "draft",
+        "fat-pack"
+    ],
+    "KHM": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-vikings",
+        "theme-w"
+    ],
+    "KLD": [
+        "draft",
+        "prerelease"
+    ],
+    "KTK": [
+        "arena",
+        "draft"
+    ],
+    "LCI": [
+        "arena",
+        "box-topper",
+        "box-topper-foil",
+        "bundle-promo",
+        "collector",
+        "collector-sample",
+        "draft",
+        "gift-bundle-promo",
+        "prerelease",
+        "set"
+    ],
+    "LEA": [
+        "default",
+        "starter"
+    ],
+    "LEB": [
+        "default",
+        "starter"
+    ],
+    "LEG": [
+        "default"
+    ],
+    "LGN": [
+        "draft",
+        "fat-pack"
+    ],
+    "LRW": [
+        "draft",
+        "tournament"
+    ],
+    "M10": [
+        "draft",
+        "six"
+    ],
+    "M11": [
+        "draft",
+        "six"
+    ],
+    "M12": [
+        "draft",
+        "six"
+    ],
+    "M13": [
+        "draft",
+        "six"
+    ],
+    "M14": [
+        "draft",
+        "six"
+    ],
+    "M15": [
+        "draft"
+    ],
+    "M19": [
+        "arena",
+        "draft",
+        "prerelease"
+    ],
+    "M20": [
+        "arena",
+        "draft",
+        "prerelease",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "M21": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease"
+    ],
+    "MAT": [
+        "arena",
+        "collector",
+        "default"
+    ],
+    "MB1": [
+        "convention",
+        "convention-2021",
+        "draft"
+    ],
+    "MBS": [
+        "draft",
+        "six"
+    ],
+    "MH1": [
+        "draft"
+    ],
+    "MH2": [
+        "collector",
+        "draft",
+        "set"
+    ],
+    "MH3": [
+        "collector",
+        "play"
+    ],
+    "MID": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w",
+        "theme-werewolves"
+    ],
+    "MIR": [
+        "draft",
+        "starter"
+    ],
+    "MKM": [
+        "collector",
+        "play",
+        "play-arena"
+    ],
+    "MM2": [
+        "draft"
+    ],
+    "MM3": [
+        "draft"
+    ],
+    "MMA": [
+        "draft"
+    ],
+    "MMQ": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "MOM": [
+        "arena",
+        "collector",
+        "collector-sample",
+        "draft",
+        "jumpstart",
+        "prerelease",
+        "set"
+    ],
+    "MOR": [
+        "draft"
+    ],
+    "MRD": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "NEM": [
+        "draft",
+        "fat-pack"
+    ],
+    "NEO": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-g",
+        "theme-ninjas",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "NPH": [
+        "draft",
+        "six"
+    ],
+    "ODY": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "OGW": [
+        "draft"
+    ],
+    "ONE": [
+        "arena",
+        "collector",
+        "collector-sample",
+        "compleat",
+        "draft",
+        "jumpstart",
+        "prerelease",
+        "set"
+    ],
+    "ONS": [
+        "draft",
+        "fat-pack",
+        "tournament"
+    ],
+    "ORI": [
+        "draft"
+    ],
+    "OTJ": [
+        "collector",
+        "collector-sample",
+        "play"
+    ],
+    "PCY": [
+        "draft",
+        "fat-pack"
+    ],
+    "PLC": [
+        "draft"
+    ],
+    "PLS": [
+        "draft",
+        "fat-pack"
+    ],
+    "RAV": [
+        "draft",
+        "tournament"
+    ],
+    "RIX": [
+        "arena",
+        "draft"
+    ],
+    "RNA": [
+        "arena",
+        "draft",
+        "theme-azorius",
+        "theme-gruul",
+        "theme-orzhov",
+        "theme-rakdos",
+        "theme-simic"
+    ],
+    "ROE": [
+        "draft",
+        "six"
+    ],
+    "RTR": [
+        "draft",
+        "prerelease-azorius",
+        "prerelease-golgari",
+        "prerelease-izzet",
+        "prerelease-rakdos",
+        "prerelease-selesnya",
+        "six"
+    ],
+    "RVR": [
+        "collector",
+        "draft"
+    ],
+    "SCG": [
+        "draft",
+        "fat-pack"
+    ],
+    "SHM": [
+        "draft",
+        "tournament"
+    ],
+    "SNC": [
+        "arena",
+        "collector",
+        "collector-sample",
+        "draft",
+        "prerelease-brokers",
+        "prerelease-cabaretti",
+        "prerelease-maestros",
+        "prerelease-obscura",
+        "prerelease-riveteers",
+        "set",
+        "theme-brokers",
+        "theme-cabaretti",
+        "theme-maestros",
+        "theme-obscura",
+        "theme-riveteers"
+    ],
+    "SOI": [
+        "draft"
+    ],
+    "SOK": [
+        "draft",
+        "fat-pack"
+    ],
+    "SOM": [
+        "draft",
+        "six"
+    ],
+    "STH": [
+        "draft"
+    ],
+    "STX": [
+        "arena",
+        "collector",
+        "draft",
+        "jp",
+        "set",
+        "set-jp",
+        "theme-lorehold",
+        "theme-prismari",
+        "theme-quandrix",
+        "theme-silverquill",
+        "theme-witherbloom"
+    ],
+    "THB": [
+        "arena",
+        "collector",
+        "draft",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "THS": [
+        "draft"
+    ],
+    "TMP": [
+        "draft",
+        "starter"
+    ],
+    "TOR": [
+        "draft",
+        "fat-pack"
+    ],
+    "TSP": [
+        "draft"
+    ],
+    "TSR": [
+        "draft"
+    ],
+    "UDS": [
+        "draft"
+    ],
+    "ULG": [
+        "draft"
+    ],
+    "UMA": [
+        "box-topper",
+        "draft"
+    ],
+    "USG": [
+        "draft",
+        "tournament"
+    ],
+    "VIS": [
+        "draft"
+    ],
+    "VOW": [
+        "arena",
+        "box-topper",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-vampires",
+        "theme-w"
+    ],
+    "WAR": [
+        "arena",
+        "draft",
+        "jp",
+        "prerelease",
+        "theme-b",
+        "theme-g",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ],
+    "WOE": [
+        "arena",
+        "collector",
+        "collector-sample",
+        "draft",
+        "prerelease",
+        "set"
+    ],
+    "WTH": [
+        "draft"
+    ],
+    "WWK": [
+        "draft",
+        "six"
+    ],
+    "XLN": [
+        "arena",
+        "draft",
+        "prerelease"
+    ],
+    "ZEN": [
+        "draft",
+        "six"
+    ],
+    "ZNR": [
+        "arena",
+        "collector",
+        "draft",
+        "prerelease",
+        "set",
+        "theme-b",
+        "theme-g",
+        "theme-party",
+        "theme-r",
+        "theme-u",
+        "theme-w"
+    ]
+}

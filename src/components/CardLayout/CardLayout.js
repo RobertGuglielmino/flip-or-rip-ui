@@ -21,6 +21,7 @@ function CardLayout(props) {
         let image;
         let cardText;
         let cardPrice;
+        let isFoiled = false;
 
         function imageClickHandler() {
             if (status === "NONE") props.updateCardState(index);
@@ -34,6 +35,7 @@ function CardLayout(props) {
                 break;
             default:
                 image = status === "RIP" ? chooseDeadRarityImage(card) : card.image;
+                isFoiled = card.isFoiled;
                 cardText = card.name;
                 cardPrice = centsToDollars(card.cents);
           }
@@ -41,13 +43,12 @@ function CardLayout(props) {
         return <GridItem 
                     onClick = {imageClickHandler}
                     key={index} rowSpan={1} colSpan={1} w='100%' h='100%'>
-            <Suspense fallback={<Spinner />}>
                     <Card h = '100%' w = '100%'
                         name={cardText}
                         price={cardPrice}
                         image={image}
+                        isFoiled={isFoiled}
                         />
-            </Suspense>
                 </GridItem>;
     })
 

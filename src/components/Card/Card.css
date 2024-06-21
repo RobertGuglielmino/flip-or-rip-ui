@@ -1,0 +1,21 @@
+/* src/components/ImageOverlay.css */
+.Card {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    margin: auto;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none; /* Ensures the overlay doesn't block interaction with the background */
+  }

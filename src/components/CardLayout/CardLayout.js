@@ -46,13 +46,14 @@ function CardLayout(props) {
                     price={cardPrice}
                     image={image}
                     isFoiled={isFoiled}
+                    isPortrait={props.isPortrait}
                     />;
     })
 
     return (
         <div className="CardLayout">
-            <Box paddingTop="1em" paddingX="10em">
-                <SimpleGrid spacingY="0px" minChildWidth={mcwFromViewport} maxChildWidth="10vw" gap="1vw">
+            <Box paddingTop="1em" paddingX="2vw">
+                <SimpleGrid spacingY="0px" minChildWidth={mcwFromViewport} gap="1vw">
                     {formattedBooster}
                 </SimpleGrid>
             </Box>

@@ -16,6 +16,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  filter: opacity(65%);
   pointer-events: none; /* Ensures the overlay doesn't block interaction with the background */
 }
 

@@ -28,7 +28,6 @@ function App() {
   const [showResults, setShowResults] = useState(false);
   const [hardMode, setHardMode] = useState(false);
   const { isOpen, onToggle } = useDisclosure()
-  const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     
   useEffect(() => {
@@ -58,6 +57,8 @@ function App() {
     lostValue: cardState.lostValue
   }
 
+  // could rework selects to not be awful
+
   return (
     <div w="100vw" className="App">
       <VStack  maxWidth="100vw" >
@@ -69,19 +70,19 @@ function App() {
             placeholder='Pick a Magic Set!'
             maxWidth = "fit-content"
             onChange={e => setPackData({...packData, set: e.target.value})}>
-            {mtgSets.map((set) => (<option key={set.setCode} value={set.setCode}>{set.setCode + " - " + set.setName}</option>))}
+            {mtgSets.map((set) => (<option key={set.setCode} value={set.setCode}>{isPortrait ? set.setCode : set.setCode + " - " + set.setName}</option>))}
           </Select>
           <Select
             isDisabled={packData.set === ""}
-            maxWidth = "fit-content"
             value={packData.boosterType}
             placeholder='Pick a booster type!'
+            maxWidth = {isPortrait ? "25vw" : "fit-content"}
             onChange={e => setPackData({...packData, boosterType: e.target.value})}>
             {packData.set === "" ? <option key="-" value="-">-</option> : generateSetTypes(packData.set)}
           </Select>
           <Button 
             maxWidth = "fit-content"
-            onClick={generatePack}>Open the Pack!</Button>
+            onClick={generatePack}>{isPortrait ? "Open!" : "Open the Pack!"}</Button>
           </HStack>
         </VStack>
         <CardLayout {...cardPackage}/>

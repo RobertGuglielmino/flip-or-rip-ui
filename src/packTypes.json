@@ -322,6 +322,18 @@
         "draft",
         "tournament"
     ],
+    "LTR": [
+        "arena",
+        "box-topper",
+        "collector",
+        "collector-sample",
+        "collector-special",
+        "draft",
+        "jumpstart",
+        "jumpstart-v2",
+        "prerelease",
+        "set"
+    ],
     "M10": [
         "draft",
         "six"
@@ -624,6 +636,9 @@
     "UDS": [
         "draft"
     ],
+    "UGL": [
+        "draft"
+    ],
     "ULG": [
         "draft"
     ],
@@ -631,9 +646,17 @@
         "box-topper",
         "draft"
     ],
+    "UNF": [
+        "box-topper",
+        "collector",
+        "draft"
+    ],
     "USG": [
         "draft",
         "tournament"
+    ],
+    "UST": [
+        "draft"
     ],
     "VIS": [
         "draft"

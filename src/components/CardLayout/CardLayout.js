@@ -1,26 +1,24 @@
 
 import './CardLayout.css';
-import { Suspense, lazy } from 'react';
-import { GridItem, Grid, Spinner } from '@chakra-ui/react';
+import { lazy } from 'react';
+import { SimpleGrid, Box } from '@chakra-ui/react';
 // import Card from '../Card/Card.js';
 import cardBack from './mtg_back.jpg';
-import ripCommon from './ripCommon.png';
-import ripUncommon from './ripUncommon.png';
-import ripRare from './ripRare.png';
-import ripMythic from './ripMythic.png';
 import centsToDollars from '../../helpers/CentsToDollarFormatter.js';
 
 const Card = lazy(() => import('../Card/Card.js'));
 
 function CardLayout(props) {
 
+    const mcwFromViewport = props.isPortrait ? "20vw" : "10vw"
+
     // get each card
     let formattedBooster = props.cards.map((card, index) => {
         
         const status = props.cardState['cards'][index];
         let image;
-        let cardText;
-        let cardPrice;
+        let cardText = "";
+        let cardPrice = "";
         let isFoiled = false;
 
         function imageClickHandler() {
@@ -40,41 +38,26 @@ function CardLayout(props) {
                 cardPrice = centsToDollars(card.cents);
           }
 
-        return <GridItem 
+        return <Card
+                    key={index}
                     onClick = {imageClickHandler}
-                    key={index} rowSpan={1} colSpan={1} w='100%' h='100%'>
-                    <Card h = '100%' w = '100%'
-                        status={status}
-                        name={cardText}
-                        price={cardPrice}
-                        image={image}
-                        isFoiled={isFoiled}
-                        />
-                </GridItem>;
+                    status={status}
+                    name={cardText}
+                    price={cardPrice}
+                    image={image}
+                    isFoiled={isFoiled}
+                    />;
     })
 
     return (
         <div className="CardLayout">
-                <Grid templateRows='repeat(2, 1fr)'templateColumns='repeat(8, 1fr)' gap={6}>
+            <Box paddingTop="1em" paddingX="10em">
+                <SimpleGrid spacingY="0px" minChildWidth={mcwFromViewport} maxChildWidth="10vw" gap="1vw">
                     {formattedBooster}
-                </Grid>
+                </SimpleGrid>
+            </Box>
         </div>
     );
-}
-
-function chooseDeadRarityImage(card) {
-    switch (card.rarity) {
-        case "common":
-            return ripCommon;
-        case "uncommon":
-            return ripUncommon;
-        case "rare":
-            return ripRare;
-        case "mythic":
-            return ripMythic;
-        default:
-            return ripCommon;
-    }
 }
 
 export default CardLayout;

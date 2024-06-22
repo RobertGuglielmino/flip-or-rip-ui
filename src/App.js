@@ -1,11 +1,13 @@
 import './App.css';
-import { Text, HStack, Select, Button, VStack } from '@chakra-ui/react';
+import { Text, HStack, Select, Button, VStack,  useDisclosure, Center } from '@chakra-ui/react';
 import Results from './components/Results/Results.js';
 import CardLayout from './components/CardLayout/CardLayout.js';
+import HardMode from './components/HardMode/HardMode.js';
 import { useEffect, useState } from 'react';
 import fetchSets from './api/getSetCodes.js';
 import getBoosterPack from './api/getBooster.js';
 import packTypesJson from './packTypes.json';
+import { useMediaQuery } from 'react-responsive'
 
 //https://www.npmjs.com/package/react-native-color-matrix-image-filters
 
@@ -19,14 +21,17 @@ function App() {
   const [booster, setBooster] = useState([]);
   const [cardState, setCardState] = useState({
     cardsTouched: 0,
+    savedValue: 0,
     lostValue: 0,
     cards:{}
   });
   const [showResults, setShowResults] = useState(false);
   const [hardMode, setHardMode] = useState(false);
+  const { isOpen, onToggle } = useDisclosure()
+  const isDesktopOrLaptop = useMediaQuery({query: '(min-width: 1224px)'})
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
     
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const fetchedSets = await fetchSets();
@@ -43,35 +48,52 @@ function App() {
   let cardPackage = {
     cards: booster,
     cardState,
-    updateCardState
+    updateCardState,
+    isPortrait
+  }
+
+  let hardModePackage = {
+    hardMode,
+    isOpen,
+    lostValue: cardState.lostValue
   }
 
   return (
-    <div className="App">
-      <VStack>
+    <div w="100vw" className="App">
+      <VStack  maxWidth="100vw" >
         <Text fontSize="3xl">Flip Or Rip Dot Com</Text>
         {/* <Button key="hard" isDisabled={hardMode} onClick={() => setHardMode(true)} bgColor="red">Hard Mode</Button> */}
         <HStack>
           <Select
             value={packData.set}
+            placeholder='Pick a Magic Set!'
+            maxWidth = "fit-content"
             onChange={e => setPackData({...packData, set: e.target.value})}>
             {mtgSets.map((set) => (<option key={set.setCode} value={set.setCode}>{set.setCode + " - " + set.setName}</option>))}
           </Select>
           <Select
             isDisabled={packData.set === ""}
+            maxWidth = "fit-content"
             value={packData.boosterType}
             placeholder='Pick a booster type!'
             onChange={e => setPackData({...packData, boosterType: e.target.value})}>
             {packData.set === "" ? <option key="-" value="-">-</option> : generateSetTypes(packData.set)}
           </Select>
-          <Button onClick={generatePack}>Let's Play!</Button>
-        </HStack>
+          <Button 
+            maxWidth = "fit-content"
+            onClick={generatePack}>Open the Pack!</Button>
+          </HStack>
+        </VStack>
         <CardLayout {...cardPackage}/>
         {showResults && <Results lostValue={cardState.lostValue}/>}
-        {/* {hardMode && cardState.cardsTouched === cardState.cards.length && <a href='https://ko-fi.com/Y8Y0ZKQZ1' target='_blank'><img height='36' className='kofi' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>} */}
-      </VStack>
+        {/* {showResults && <Results lostValue={cardState.savedValue}/>} */}
+        <Center>
+        {hardMode && <HardMode {...hardModePackage}/>} 
+        </Center>
     </div>
   );
+
+  // https://storage.ko-fi.com/cdn/kofi3.png?v=3
 
   function generateSetTypes(set) {
     return packTypesJson[set].map(type => (<option key={type} value={type}>{formatBoosterType(type)}</option>))
@@ -88,6 +110,7 @@ function App() {
   }
 
   function generatePack() {
+    onToggle();
     const start = Date.now();
     console.log("started pack generation!");
     let respo;
@@ -121,24 +144,26 @@ function App() {
   }
 
   function updateCardState(index) {
-    
-      let actionTaken = cardState.nextAction;
-      let flipNextCard = cardState.nextAction === "FLIP";
-      // if flip, add card to list and show
-      // if rip, show name, ripped card, and value
+    if (cardState.cardsTouched === booster.length-1) onToggle();
+  
+    let actionTaken = cardState.nextAction;
+    let flipNextCard = cardState.nextAction === "FLIP";
+    // if flip, add card to list and show
+    // if rip, show name, ripped card, and value
 
-      let additionalLostValue = flipNextCard ? 0 : booster[index]['cents'];
-      setCardState({
-        ...cardState,
-        cardsTouched: cardState.cardsTouched+1,
-        nextAction: flipNextCard ? "RIP" : "FLIP",
-        lostValue: cardState.lostValue + additionalLostValue,
-        cards: {
-          ...cardState.cards,
-          [index]: actionTaken
-        }
-      })
-
+    let additionalLostValue = flipNextCard ? 0 : booster[index]['cents'];
+    let additionalSavedValue = !flipNextCard ? 0 : booster[index]['cents'];
+    setCardState({
+      ...cardState,
+      cardsTouched: cardState.cardsTouched+1,
+      nextAction: flipNextCard ? "RIP" : "FLIP",
+      savedValue:  cardState.savedValue + additionalSavedValue,
+      lostValue: cardState.lostValue + additionalLostValue,
+      cards: {
+        ...cardState.cards,
+        [index]: actionTaken
+      }
+    })
   }
 }
 

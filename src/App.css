@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.VStackApp {
+
+  border:1px solid black;
+}
+
 .kofi {
   border:none;
   width:100%;

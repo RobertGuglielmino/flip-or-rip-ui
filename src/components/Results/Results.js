@@ -14,7 +14,7 @@ function Results(props) {
 
     return (
         <div className="Results">
-            <Box>
+            <Box paddingTop="0px" >
                 <Text>u lost this much money 😔 :</Text>
                 <Text as={props.lostValue > 20000 ? 'b' : ''} fontSize={lostValueSize(props.lostValue)}>{centsToDollars(props.lostValue)}</Text>
                 {/* <a href='https://ko-fi.com/Y8Y0ZKQZ1' target='_blank'><img height='36' className='kofi' src='https://storage.ko-fi.com/cdn/kofi3.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a> */}

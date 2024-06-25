@@ -1,10 +1,13 @@
+
+
 .App {
+  height: 100%;
   text-align: center;
 }
 
-.VStackApp {
-
-  border:1px solid black;
+.footer {
+  
+  background: red;
 }
 
 .kofi {

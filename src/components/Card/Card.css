@@ -1,12 +1,13 @@
 /* src/components/ImageOverlay.css */
 .Card {
-    position: relative;
-    vertical-align: top;
-    width: 100%;
-    max-width: 600px; /* Adjust as needed */
-    margin: auto;
-  }
-  
+  position: relative;
+  vertical-align: top;
+  width: 100%;
+  max-width: 600px; /* Adjust as needed */
+  margin: auto;
+}
+
+
 .background-image {
   width: 100%;
   height: auto;
@@ -16,13 +17,81 @@
   position: absolute;
   top: 0;
   left: 0;
-  filter: opacity(65%);
   pointer-events: none; /* Ensures the overlay doesn't block interaction with the background */
 }
 
+.ripped-card {
+position: absolute;
+top: 0;
+pointer-events: none; /* Ensures the overlay doesn't block interaction with the background */
+}
 
 .card-package:hover {
-  box-shadow: rgba(0,0,0,.6) 0 2px 5px;
-  transition: all .3s ease-out;
-  transform: scale(1.04)
+box-shadow: rgba(0,0,0,.6) 0 2px 5px;
+/* transition: all .3s ease-out;
+transform: scale(1.04) */
 }
+
+.card_picture_container {
+  position: relative;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0) 60%);
+  background-size: 400% 400%;
+  -webkit-animation: foil_layer_animation 4s ease infinite;
+  animation: foil_layer_animation 4s ease infinite;
+  pointer-events: none;
+}
+
+.shake:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 0.1s;
+}
+
+@keyframes shake {
+0% { transform: translate(1px, 1px) rotate(0deg); }
+10% { transform: translate(-1px, -2px) rotate(-1deg); }
+20% { transform: translate(-3px, 0px) rotate(1deg); }
+30% { transform: translate(3px, 2px) rotate(0deg); }
+40% { transform: translate(1px, -1px) rotate(1deg); }
+50% { transform: translate(-1px, 2px) rotate(-1deg); }
+60% { transform: translate(-3px, 1px) rotate(0deg); }
+70% { transform: translate(3px, 1px) rotate(-1deg); }
+80% { transform: translate(-1px, -1px) rotate(1deg); }
+90% { transform: translate(1px, 2px) rotate(0deg); }
+100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes foil_layer_animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+@-webkit-keyframes foil_layer_animation {
+  0% {
+      background-position: 0% 50%
+  }
+
+  50% {
+      background-position: 100% 50%
+  }
+
+  100% {
+      background-position: 0% 50%
+  }
+}
+

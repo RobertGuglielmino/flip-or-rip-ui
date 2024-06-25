@@ -1,12 +1,14 @@
 
 import './CardLayout.css';
-import { lazy } from 'react';
+import { lazy, memo } from 'react';
 import { SimpleGrid, Box } from '@chakra-ui/react';
 // import Card from '../Card/Card.js';
-import cardBack from './mtg_back.jpg';
+import cardBack from './mtg_back.png';
 import centsToDollars from '../../helpers/CentsToDollarFormatter.js';
 
 const Card = lazy(() => import('../Card/Card.js'));
+
+const memoCard = memo(Card);
 
 function CardLayout(props) {
 
@@ -15,37 +17,32 @@ function CardLayout(props) {
     // get each card
     let formattedBooster = props.cards.map((card, index) => {
         
-        const status = props.cardState['cards'][index];
-        let image;
-        let cardText = "";
-        let cardPrice = "";
-        let isFoiled = false;
-
+        const cardData = props.cardState['cards'][index];
+        let cardDown = {
+            image: cardBack,
+            cardText:"",
+            cardPrice: "",
+            isFoiled: false,
+        }
+        let cardUp = {
+            image: card.image, //"https://d3vjinhen5j20w.cloudfront.net/{uuid}.jpg"
+            cardText: card.name,
+            cardPrice: centsToDollars(card.cents),
+            isFoiled: card.isFoil,
+        }
         function imageClickHandler() {
-            if (status === "NONE") props.updateCardState(index);
+            if (cardData.status === "NONE") props.updateCardState(index);
         }
 
-        switch(status) {
-            case "NONE":
-                image = cardBack;
-                cardText = "";
-                cardPrice = "";
-                break;
-            default:
-                image = card.image;
-                isFoiled = card.isFoil;
-                cardText = card.name;
-                cardPrice = centsToDollars(card.cents);
-          }
-
+          //absolutey grooss
         return <Card
                     key={index}
-                    onClick = {imageClickHandler}
-                    status={status}
-                    name={cardText}
-                    price={cardPrice}
-                    image={image}
-                    isFoiled={isFoiled}
+                    imageClickHandler = {imageClickHandler}
+                    shake={cardData.shake}
+                    cardDown={cardDown}
+                    cardUp={cardUp}
+                    clicked={cardData.clicked}
+                    status={cardData.status}
                     isPortrait={props.isPortrait}
                     />;
     })

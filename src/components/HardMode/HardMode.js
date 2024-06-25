@@ -1,5 +1,5 @@
 import './HardMode.css';
-import { Box, Text, ScaleFade, Heading, LinkBox, LinkOverlay } from '@chakra-ui/react';
+import { ScaleFade, Heading, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import centsToDollars from '../../helpers/CentsToDollarFormatter.js';
 
 function HardMode(props) {

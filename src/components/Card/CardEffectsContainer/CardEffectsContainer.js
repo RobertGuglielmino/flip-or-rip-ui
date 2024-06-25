@@ -1,7 +1,6 @@
 
 import './CardEffectsContainer.css';
 import { useEffect, useState } from 'react';
-import scale from 'react';
 import mask1 from '../../../masks/1_mask_long-modified.png';
 import mask2 from '../../../masks/2_mask_long-modified.png';
 import mask3 from '../../../masks/3_mask_long-modified.png';
@@ -28,7 +27,7 @@ function CardEffectsContainer(props) {
     useEffect(() => {
         setMaskImage(maskImages[Math.floor(Math.random() * maskImages.length)]);
         setRotation(getRandomRotation());
-    }, [props.maskPosition]); // Update maskImage when maskPosition changes
+    }, [props.maskPosition]);
 
     const style = {
         MaskImage: maskImage,
@@ -40,7 +39,7 @@ function CardEffectsContainer(props) {
         transform: `rotate(${rotation}deg) scale(0.9)`,
     };
 
-    return (<>
+    return (<div className={props.shake}>
         {
             props.clicked ?
                 props.ripped ?
@@ -59,7 +58,7 @@ function CardEffectsContainer(props) {
                     {props.children}
                 </div>
         }
-    </>
+    </div>
     );
 }
 

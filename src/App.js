@@ -1,14 +1,15 @@
 import './App.css';
-import { Flex, Text, HStack, Select, Button, VStack, useDisclosure, Image, Center } from '@chakra-ui/react';
+import { Flex, HStack, Select, Button, VStack, useDisclosure, Center, Spinner } from '@chakra-ui/react';
 import Results from './components/Results/Results.js';
-import CardLayout from './components/CardLayout/CardLayout.js';
-import HardMode from './components/HardMode/HardMode.js';
-import { useEffect, useState } from 'react';
+import HelperHeader from './components/HelperHeader/HelperHeader.js';
+// import CardLayout from './components/CardLayout/CardLayout.js';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import fetchSets from './api/getSetCodes.js';
 import getBoosterPack from './api/getBooster.js';
 import packTypesJson from './packTypes.json';
 import { useMediaQuery } from 'react-responsive'
-import cardBack from './mtg_back.jpg';
+
+const CardLayout = lazy(() => import('./components/CardLayout/CardLayout.js'));
 
 // better device ideas
 //https://stackoverflow.com/questions/59957272/change-text-depending-on-what-device-its-viewed-from
@@ -25,10 +26,12 @@ function App() {
     cardsTouched: 0,
     savedValue: 0,
     lostValue: 0,
+    nextAction: "Flip Or Rip Dot Com",
     cards: {}
   });
   const [showResults, setShowResults] = useState(false);
   const [hardMode, setHardMode] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { isOpen, onToggle } = useDisclosure()
   const isPortrait = useMediaQuery({ query: '(orientation: portrait)' })
 
@@ -43,6 +46,7 @@ function App() {
     }
 
     fetchData();
+    onToggle();
   }, []);
 
   let cardPackage = {
@@ -52,19 +56,13 @@ function App() {
     isPortrait
   }
 
-  let hardModePackage = {
-    hardMode,
-    isOpen,
-    lostValue: cardState.lostValue
-  }
-
   // could rework selects to not be awful
   return (
     <div h="100%" w="100vw" className="App">
-      <Flex grow={1} justifyContent="end"direction="column" className="wrapper">
+      <Flex grow={1} justifyContent="end" direction="column" className="wrapper">
+        <HelperHeader status={cardState.nextAction} isLoaded={showResults} hardMode={hardMode} setHardMode={updateHardModeForButton} />
+        {/* <Button onClick={onToggle}>Click Me</Button> */}
         <VStack maxWidth="100vw" >
-          <Text fontSize="3xl">Flip Or Rip Dot Com</Text>
-          {/* <Button key="hard" isDisabled={hardMode} onClick={() => setHardMode(true)} bgColor="red">Hard Mode</Button> */}
           <HStack>
             <Select
               value={packData.set}
@@ -76,26 +74,34 @@ function App() {
             <Select
               isDisabled={packData.set === ""}
               value={packData.boosterType}
-              placeholder='Pick a booster type!'
+              placeholder={isPortrait ? "Booster" : 'Pick a booster type!'}
               maxWidth={isPortrait ? "25vw" : "fit-content"}
               onChange={e => setPackData({ ...packData, boosterType: e.target.value })}>
               {packData.set === "" ? <option key="-" value="-">-</option> : generateSetTypes(packData.set)}
             </Select>
             <Button
               maxWidth="fit-content"
-              onClick={generatePack}>{isPortrait ? "Open!" : "Open the Pack!"}</Button>
+              isDisabled={loading}
+              bgColor="green"
+              onClick={generatePack}>
+              {loading ?
+                <Spinner /> :
+                isPortrait ?
+                  "Open!" :
+                  "Open the Pack!"}
+            </Button>
           </HStack>
         </VStack>
-        <CardLayout {...cardPackage} />
-        {showResults && <Results lostValue={cardState.lostValue} />}
-        {/* {showResults && <Results lostValue={cardState.savedValue}/>} */}
+        <Suspense fallback={<Spinner />}>
+          <CardLayout {...cardPackage} />
+        </Suspense>
         <Center>
-          {hardMode && <HardMode {...hardModePackage} />}
+          {showResults && <Results hardMode={hardMode} lostValue={cardState.lostValue} isOpen={isOpen} />}
         </Center>
       </Flex>
-      {/* <footer className="footer">yes</footer> */}
     </div>
   );
+  // {/* {showResults && <Text>{centsToDollars(cardState.savedValue)}</Text>} */ }
 
   // https://storage.ko-fi.com/cdn/kofi3.png?v=3
 
@@ -114,8 +120,8 @@ function App() {
   }
 
   function generatePack() {
-    onToggle();
     const start = Date.now();
+    setLoading(true);
     console.log("started pack generation!");
     let respo;
 
@@ -146,13 +152,24 @@ function App() {
         console.log("failed at generating booster!");
         console.log(error);
       }
+      setLoading(false);
     }
     setShowResults(true);
     fetchData();
   }
 
+  // function updateHardMode() {
+  //   if (hardMode && (cardState.cardsTouched >= booster.length - 1)) onToggle();
+  // }
+  function updateHardModeForButton() {
+    setHardMode(true);
+    // if (hardMode && (cardState.cardsTouched >= booster.length - 1)) onToggle();
+  }
+
   function updateCardState(index) {
-    if (cardState.cardsTouched === booster.length - 1) onToggle();
+    // if (cardState.cardsTouched === 1) onToggle();
+    if (hardMode && cardState.cardsTouched === booster.length - 1) onToggle();
+    // updateHardMode();
 
     let actionTaken = cardState.nextAction;
     let flipNextCard = cardState.nextAction === "FLIP";
@@ -161,7 +178,7 @@ function App() {
 
     let additionalLostValue = flipNextCard ? 0 : booster[index]['cents'];
     let additionalSavedValue = !flipNextCard ? 0 : booster[index]['cents'];
-    
+
     setCardState({
       ...cardState,
       cardsTouched: cardState.cardsTouched + 1,
